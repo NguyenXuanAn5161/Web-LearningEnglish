@@ -1,7 +1,7 @@
 import { useState } from 'preact/hooks'
-import preactLogo from './assets/preact.svg'
-import viteLogo from '/vite.svg'
+import viteLogo from '../public/vite.svg'
 import './app.css'
+import pReactLogo from './assets/preact.svg'
 
 export function App() {
   const [count, setCount] = useState(0)
@@ -10,14 +10,14 @@ export function App() {
     <>
       <div>
         <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} class="logo" alt="Vite logo" />
+          <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
         <a href="https://preactjs.com" target="_blank">
-          <img src={preactLogo} class="logo preact" alt="Preact logo" />
+          <img src={pReactLogo} className="logo preact" alt="Preact logo" />
         </a>
       </div>
       <h1>Vite + Preact</h1>
-      <div class="card">
+      <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
@@ -25,7 +25,7 @@ export function App() {
           Edit <code>src/app.tsx</code> and save to test HMR
         </p>
       </div>
-      <p class="read-the-docs">
+      <p className="read-the-docs">
         Click on the Vite and Preact logos to learn more
       </p>
     </>
