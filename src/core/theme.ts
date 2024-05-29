@@ -9,6 +9,7 @@ const theme = {
     warning: "#FFC107",
     success: "#198754",
     lightGrey: '#F8F9FA',
+    darkGrey: '#6C757D',
     info: "#0DCAF0"
   },
   fonts: {
