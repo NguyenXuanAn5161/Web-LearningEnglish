@@ -19,6 +19,7 @@ interface ButtonProps {
   width?: string;
   height?: string;
   textTransform?: textTransform;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = (ButtonProps) => {
@@ -67,15 +68,28 @@ const Button: React.FC<ButtonProps> = (ButtonProps) => {
     e.currentTarget.style.backgroundColor = backgroundColor;
   };
 
+  const handleClick = () => {
+    if (ButtonProps.onClick) {
+      ButtonProps.onClick();
+    }
+  };
+
+  const handlePress = (e: any) => {
+    if (e.key === "Enter") {
+      handleClick();
+    }
+  };
+
   return (
     <button
       style={{ cssText: buttonStyle }}
       {...ButtonProps}
       onMouseOver={(e) => hoverOverStyle(e)}
-      onFocus={(e) => hoverOverStyle(e)}
       onMouseOut={(e) => hoverOutStyle(e)}
-      onBlur={(e) => hoverOutStyle(e)}
-      //   onMouseLeave={(e) => hoverOutStyle(e)}
+      onFocus={(e) => hoverOverStyle(e)} // onFocus dùng cho việc focus vào button bằng tab
+      onBlur={(e) => hoverOutStyle(e)} // onBlur dùng cho việc focus ra khỏi button bằng tab
+      onClick={() => handleClick()}
+      onKeyUp={(e) => handlePress(e)}
     >
       {ButtonProps.title}
     </button>
