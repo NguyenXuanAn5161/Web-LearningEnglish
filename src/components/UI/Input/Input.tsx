@@ -78,8 +78,6 @@ interface FileInputProps extends BaseInputProps {
   accept?: string;
 }
 
-type formtarget = "_blank" | "_self" | "_parent" | "_top" | string;
-
 /*
       Kế thừa từ BaseInputProps với các thuộc tính dành
       riêng cho input hình ảnh (src, alt, height, width,
@@ -99,7 +97,7 @@ interface ImageInputProps extends BaseInputProps {
     | "multipart/form-data"
     | "text/plain";
   formmethod?: "get" | "post";
-  formtarget?: formtarget;
+  formtarget?: string;
 }
 
 /*
