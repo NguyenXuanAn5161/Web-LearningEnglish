@@ -24,12 +24,10 @@ type InputType =
   | "url"
   | "week";
 
-{
-  /*
+/*
     Chứa các thuộc tính chung có thể áp dụng
     cho hầu hết các loại input.
 **/
-}
 interface BaseInputProps {
   type: InputType;
   placeholder?: string;
@@ -54,46 +52,40 @@ interface BaseInputProps {
   style?: CSSProperties;
 }
 
-{
-  /*
+/*
      Kế thừa từ BaseInputProps với thuộc tính checked.
   **/
-}
 interface CheckboxInputProps extends BaseInputProps {
   type: "checkbox";
   checked?: boolean;
 }
 
-{
-  /*
+/*
       Kế thừa từ BaseInputProps với type dành riêng cho
       các input dạng văn bản.
   **/
-}
 interface TextInputProps extends BaseInputProps {
   type: "text" | "password" | "email" | "url" | "tel" | "search";
 }
 
-{
-  /*
+/*
       Kế thừa từ BaseInputProps với các thuộc tính
       multiple và accept dành riêng cho input tệp tin.
   **/
-}
 interface FileInputProps extends BaseInputProps {
   type: "file";
   multiple?: boolean;
   accept?: string;
 }
 
-{
-  /*
+type formtarget = "_blank" | "_self" | "_parent" | "_top" | string;
+
+/*
       Kế thừa từ BaseInputProps với các thuộc tính dành
       riêng cho input hình ảnh (src, alt, height, width,
         align, formaction, formenctype, formmethod,
         và formtarget).
   **/
-}
 interface ImageInputProps extends BaseInputProps {
   type: "image";
   src?: string;
@@ -107,14 +99,12 @@ interface ImageInputProps extends BaseInputProps {
     | "multipart/form-data"
     | "text/plain";
   formmethod?: "get" | "post";
-  formtarget?: "_blank" | "_self" | "_parent" | "_top" | string;
+  formtarget?: formtarget;
 }
 
-{
-  /*
+/*
       Bao gồm các loại input còn lại với BaseInputProps.
   **/
-}
 interface OtherInputProps extends BaseInputProps {
   type:
     | "reset"
@@ -157,7 +147,7 @@ const Input: React.FC<InputProps> = (props) => {
     case "file":
       return <input type="file" style={style} {...rest} />;
     case "image":
-      return <input type="image" style={style} {...rest} />;
+      return <input alt={props.alt} type="image" style={style} {...rest} />;
     default:
       return <input type={type} style={style} {...rest} />;
   }
